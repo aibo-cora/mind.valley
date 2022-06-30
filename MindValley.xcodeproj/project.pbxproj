@@ -17,6 +17,8 @@
 		DE58C4EA286E1AD000384F17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4C0286E1ACE00384F17 /* ContentView.swift */; };
 		DE58C4EB286E1AD000384F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE58C4C1286E1AD000384F17 /* Assets.xcassets */; };
 		DE58C4EC286E1AD000384F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE58C4C1286E1AD000384F17 /* Assets.xcassets */; };
+		DE58C4FE286E1C5900384F17 /* NetworkComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4FD286E1C5900384F17 /* NetworkComm.swift */; };
+		DE58C4FF286E1C5900384F17 /* NetworkComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4FD286E1C5900384F17 /* NetworkComm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		DE58C4DF286E1AD000384F17 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE58C4E3286E1AD000384F17 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		DE58C4E5286E1AD000384F17 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		DE58C4FD286E1C5900384F17 /* NetworkComm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkComm.swift; sourceTree = "<group>"; };
+		DE58C500286E1EF200384F17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,10 @@
 		DE58C4B9286E1ACE00384F17 = {
 			isa = PBXGroup;
 			children = (
+				DE58C500286E1EF200384F17 /* README.md */,
+				DE58C501286E1F8000384F17 /* Models */,
+				DE58C4FC286E1C2B00384F17 /* ViewModels */,
+				DE58C4FB286E1AE800384F17 /* Data */,
 				DE58C4BE286E1ACE00384F17 /* Shared */,
 				DE58C4CD286E1AD000384F17 /* macOS */,
 				DE58C4D6286E1AD000384F17 /* Tests iOS */,
@@ -139,6 +147,28 @@
 				DE58C4E5286E1AD000384F17 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		DE58C4FB286E1AE800384F17 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		DE58C4FC286E1C2B00384F17 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DE58C4FD286E1C5900384F17 /* NetworkComm.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DE58C501286E1F8000384F17 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE58C4FE286E1C5900384F17 /* NetworkComm.swift in Sources */,
 				DE58C4E9286E1AD000384F17 /* ContentView.swift in Sources */,
 				DE58C4E7286E1AD000384F17 /* MindValleyApp.swift in Sources */,
 			);
@@ -308,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE58C4FF286E1C5900384F17 /* NetworkComm.swift in Sources */,
 				DE58C4EA286E1AD000384F17 /* ContentView.swift in Sources */,
 				DE58C4E8286E1AD000384F17 /* MindValleyApp.swift in Sources */,
 			);
