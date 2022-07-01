@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+    @StateObject private var dataManager = DataManager()
+    
+    @ViewBuilder var body: some View {
+        VStack {
+            switch dataManager.sessionStatus {
+            case .downloaded:
+                Text("Hi, World.")
+            default:
+                ProgressView()
+                    .task {
+                        await dataManager.getSectionData()
+                    }
+            }
+        }
     }
 }
 

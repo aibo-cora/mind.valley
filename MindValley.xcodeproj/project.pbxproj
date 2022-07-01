@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE42CC42286E257A005F662C /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC41286E257A005F662C /* Channels.swift */; };
+		DE42CC43286E257A005F662C /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC41286E257A005F662C /* Channels.swift */; };
+		DE42CC45286E292F005F662C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC44286E292F005F662C /* Shared.swift */; };
+		DE42CC46286E292F005F662C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC44286E292F005F662C /* Shared.swift */; };
+		DE42CC48286E295E005F662C /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC47286E295E005F662C /* Categories.swift */; };
+		DE42CC49286E295E005F662C /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC47286E295E005F662C /* Categories.swift */; };
 		DE58C4D8286E1AD000384F17 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4D7286E1AD000384F17 /* Tests_iOS.swift */; };
 		DE58C4DA286E1AD000384F17 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4D9286E1AD000384F17 /* Tests_iOSLaunchTests.swift */; };
 		DE58C4E4286E1AD000384F17 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4E3286E1AD000384F17 /* Tests_macOS.swift */; };
@@ -19,6 +25,10 @@
 		DE58C4EC286E1AD000384F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE58C4C1286E1AD000384F17 /* Assets.xcassets */; };
 		DE58C4FE286E1C5900384F17 /* NetworkComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4FD286E1C5900384F17 /* NetworkComm.swift */; };
 		DE58C4FF286E1C5900384F17 /* NetworkComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4FD286E1C5900384F17 /* NetworkComm.swift */; };
+		DE58C503286E212300384F17 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C502286E212300384F17 /* DataManager.swift */; };
+		DE58C504286E212300384F17 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C502286E212300384F17 /* DataManager.swift */; };
+		DE58C506286E232C00384F17 /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C505286E232C00384F17 /* Episodes.swift */; };
+		DE58C507286E232C00384F17 /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C505286E232C00384F17 /* Episodes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE42CC41286E257A005F662C /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
+		DE42CC44286E292F005F662C /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		DE42CC47286E295E005F662C /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		DE58C4BF286E1ACE00384F17 /* MindValleyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindValleyApp.swift; sourceTree = "<group>"; };
 		DE58C4C0286E1ACE00384F17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DE58C4C1286E1AD000384F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +66,8 @@
 		DE58C4E5286E1AD000384F17 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		DE58C4FD286E1C5900384F17 /* NetworkComm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkComm.swift; sourceTree = "<group>"; };
 		DE58C500286E1EF200384F17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DE58C502286E212300384F17 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DE58C505286E232C00384F17 /* Episodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episodes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +108,6 @@
 				DE58C500286E1EF200384F17 /* README.md */,
 				DE58C501286E1F8000384F17 /* Models */,
 				DE58C4FC286E1C2B00384F17 /* ViewModels */,
-				DE58C4FB286E1AE800384F17 /* Data */,
 				DE58C4BE286E1ACE00384F17 /* Shared */,
 				DE58C4CD286E1AD000384F17 /* macOS */,
 				DE58C4D6286E1AD000384F17 /* Tests iOS */,
@@ -149,17 +163,11 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
-		DE58C4FB286E1AE800384F17 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		DE58C4FC286E1C2B00384F17 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				DE58C4FD286E1C5900384F17 /* NetworkComm.swift */,
+				DE58C502286E212300384F17 /* DataManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -167,6 +175,10 @@
 		DE58C501286E1F8000384F17 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DE42CC41286E257A005F662C /* Channels.swift */,
+				DE42CC47286E295E005F662C /* Categories.swift */,
+				DE58C505286E232C00384F17 /* Episodes.swift */,
+				DE42CC44286E292F005F662C /* Shared.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -329,9 +341,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE42CC45286E292F005F662C /* Shared.swift in Sources */,
+				DE42CC48286E295E005F662C /* Categories.swift in Sources */,
 				DE58C4FE286E1C5900384F17 /* NetworkComm.swift in Sources */,
+				DE58C503286E212300384F17 /* DataManager.swift in Sources */,
 				DE58C4E9286E1AD000384F17 /* ContentView.swift in Sources */,
+				DE42CC42286E257A005F662C /* Channels.swift in Sources */,
 				DE58C4E7286E1AD000384F17 /* MindValleyApp.swift in Sources */,
+				DE58C506286E232C00384F17 /* Episodes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,9 +356,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE42CC46286E292F005F662C /* Shared.swift in Sources */,
+				DE42CC49286E295E005F662C /* Categories.swift in Sources */,
 				DE58C4FF286E1C5900384F17 /* NetworkComm.swift in Sources */,
+				DE58C504286E212300384F17 /* DataManager.swift in Sources */,
 				DE58C4EA286E1AD000384F17 /* ContentView.swift in Sources */,
+				DE42CC43286E257A005F662C /* Channels.swift in Sources */,
 				DE58C4E8286E1AD000384F17 /* MindValleyApp.swift in Sources */,
+				DE58C507286E232C00384F17 /* Episodes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
