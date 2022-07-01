@@ -30,35 +30,31 @@ final class DataManager: ObservableObject {
         do {
             updateStatus(status: .downloading)
             
-            try network.getNetworkData(endpoint: NetworkComm.NetworkEndpoints.episodes.rawValue, using: EpisodesData.self)
+            NetworkComm.NetworkEndpoints.allCases.enumerated().forEach { index, endpoint in
+                
+            }
+            let episodePublisher = try network.getNetworkData(endpoint: NetworkComm.NetworkEndpoints.episodes.rawValue, using: EpisodesData.self)
                 .receive(on: DispatchQueue.main)
                 .map(\.data)
-                .sink(receiveCompletion: { print($0) }, receiveValue: { [unowned self] mediaList in
+                
+            let channelPublisher = try network.getNetworkData(endpoint: NetworkComm.NetworkEndpoints.channels.rawValue, using: ChannelsData.self)
+                .receive(on: DispatchQueue.main)
+                .map(\.data)
+                
+            let categoryPublisher = try network.getNetworkData(endpoint: NetworkComm.NetworkEndpoints.categories.rawValue, using: CategoriesData.self)
+                .receive(on: DispatchQueue.main)
+                .map(\.data)
+            
+            episodePublisher
+                .combineLatest(channelPublisher, categoryPublisher)
+                .sink(receiveCompletion: { print($0) }) { [unowned self] mediaList, channelList, categoryList in
                     episodes = mediaList.media
-                    
-                    print(episodes)
-                })
-                .store(in: &subscriptions)
-            try network.getNetworkData(endpoint: NetworkComm.NetworkEndpoints.channels.rawValue, using: ChannelsData.self)
-                .receive(on: DispatchQueue.main)
-                .map(\.data)
-                .sink(receiveCompletion: { print($0) }, receiveValue: { [unowned self] channelList in
                     channels = channelList.channels
-                    
-                    // print(episodes)
-                })
-                .store(in: &subscriptions)
-            try network.getNetworkData(endpoint: NetworkComm.NetworkEndpoints.categories.rawValue, using: CategoriesData.self)
-                .receive(on: DispatchQueue.main)
-                .map(\.data)
-                .sink(receiveCompletion: { print($0) }, receiveValue: { [unowned self] categoryList in
                     categories = categoryList.categories
                     
-                    // print(episodes)
-                })
+                    updateStatus(status: .downloaded)
+                }
                 .store(in: &subscriptions)
-            
-            updateStatus(status: .downloaded)
         } catch NetworkComm.NetworkErrors.badURL {
             updateStatus(status: .networkError)
         } catch NetworkComm.NetworkErrors.badContents {

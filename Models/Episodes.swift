@@ -8,7 +8,7 @@
 import Foundation
 
 struct EpisodesData: Decodable {
-    var data: MediaList
+    let data: MediaList
     
     struct MediaList: Decodable {
         let media: [Media]

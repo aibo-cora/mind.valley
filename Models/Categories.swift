@@ -8,7 +8,7 @@
 import Foundation
 
 struct CategoriesData: Decodable {
-    var data: CategoryList
+    let data: CategoryList
     
     struct CategoryList: Decodable {
         let categories: [Category]

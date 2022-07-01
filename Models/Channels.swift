@@ -8,7 +8,7 @@
 import Foundation
 
 struct ChannelsData: Decodable {
-    var data: ChannelList
+    let data: ChannelList
     
     struct ChannelList: Decodable {
         let channels: [Channel]

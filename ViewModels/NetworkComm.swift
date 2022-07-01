@@ -17,7 +17,7 @@ final class NetworkComm {
         case other(_ error: Error)
     }
     
-    public enum NetworkEndpoints: String {
+    public enum NetworkEndpoints: String, CaseIterable {
         case episodes = "https://pastebin.com/raw/z5AExTtw"
         case channels = "https://pastebin.com/raw/Xt12uVhM"
         case categories = "https://pastebin.com/raw/A0CgArX3"
