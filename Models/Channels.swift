@@ -23,8 +23,21 @@ struct ChannelsData: Decodable {
         let iconAsset: IconAsset?
         let coverAsset: CoverAsset
         
-        struct Series: Decodable {
+        struct Series: Decodable, MediaContent, Hashable {
+            let id = UUID()
             
+            static func == (lhs: ChannelsData.Channel.Series, rhs: ChannelsData.Channel.Series) -> Bool {
+                lhs.id == rhs.id
+            }
+            
+            func hash(into hasher: inout Hasher) {
+                hasher.combine(id)
+            }
+            
+            var channel: Media.Channel?
+            
+            let title: String
+            let coverAsset: CoverAsset
         }
         
         struct IconAsset: Decodable {

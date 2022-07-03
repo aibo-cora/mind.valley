@@ -17,27 +17,18 @@ struct ContentView: View {
                     switch dataManager.sessionStatus {
                     case .downloaded:
                         VStack(alignment: .leading) {
-                            Text("New Episodes")
-                                .modifier(SectionTitle())
-                            ScrollViewReader { scrollview in
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack(alignment: .top) {
-                                        ForEach(dataManager.episodes, id: \.id) { episode in
-                                            EpisodeView(episode: episode)
-                                        }
-                                    }
+                            MediaView(media: dataManager.episodes, sectionTitle: "New Episodes")
+                            Divider()
+                                .padding()
+                            ForEach(dataManager.channels, id: \.title) { channel in
+                                if channel.series.count > 0 {
+                                    MediaView(media: channel.series, sectionTitle: channel.title)
+                                } else {
+                                    MediaView(media: channel.latestMedia, sectionTitle: channel.title)
                                 }
                             }
                             Divider()
                                 .padding()
-                                .frame(height: 1)
-                            VStack {
-                                Text("Channels")
-                                    .modifier(SectionTitle())
-                            }
-                            Divider()
-                                .padding()
-                                .frame(height: 1)
                             VStack(alignment: .leading) {
                                 Text("Browse by categories")
                                     .modifier(SectionTitle())

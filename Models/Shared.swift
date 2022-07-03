@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct Media: Decodable {
+struct Media: Decodable, MediaContent {
+    static func == (lhs: Media, rhs: Media) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let id = UUID()
     
     let type: String
@@ -27,4 +35,12 @@ struct CoverAsset: Decodable {
 protocol NetworkResponse {
     associatedtype R
     var data: R { get }
+}
+
+protocol MediaContent: Hashable {
+    var id: UUID { get }
+    var title: String { get }
+    var coverAsset: CoverAsset { get }
+    
+    var channel: Media.Channel? { get }
 }
