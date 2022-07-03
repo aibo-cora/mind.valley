@@ -8,6 +8,8 @@
 import Foundation
 
 struct Media: Decodable {
+    let id = UUID()
+    
     let type: String
     let title: String
     let coverAsset: CoverAsset
