@@ -13,7 +13,7 @@ struct BrowseCategoriesView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Browse by categories")
-                .modifier(SectionTitle(fontSize: 20))
+                .modifier(SectionTitle(fontSize: 20, color: Color(hex: "95989D")))
                 .padding()
             LazyVGrid(columns: Array(repeating: .init(.flexible()),
                         count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2)) {

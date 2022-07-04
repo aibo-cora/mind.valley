@@ -20,9 +20,10 @@ struct MediaView<T>: View where T: MediaContent {
                 Image(systemName: isNewEpisodesSection ? "" : "book")
                 VStack(alignment: .leading) {
                     Text(sectionTitle)
-                        .modifier(SectionTitle(fontSize: 20))
+                        .modifier(SectionTitle(fontSize: 20, color: isNewEpisodesSection ? Color(hex: "95989D") : .white))
                     if !(isNewEpisodesSection) {
                         Text("\(media.count)" + " " + (media is [Media] ? "episodes" : "series"))
+                            .modifier(SectionTitle(fontSize: 16, color: Color(hex: "95989D")))
                     }
                 }
             }
