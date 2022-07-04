@@ -18,8 +18,7 @@ struct ContentView: View {
                     case .downloaded:
                         VStack(alignment: .leading) {
                             MediaView(media: dataManager.episodes, sectionTitle: "New Episodes")
-                            Divider()
-                                .padding()
+                            
                             ForEach(dataManager.channels, id: \.title) { channel in
                                 if channel.series.count > 0 {
                                     MediaView(media: channel.series, sectionTitle: channel.title)
@@ -27,25 +26,8 @@ struct ContentView: View {
                                     MediaView(media: channel.latestMedia, sectionTitle: channel.title)
                                 }
                             }
-                            Divider()
-                                .padding()
-                            VStack(alignment: .leading) {
-                                Text("Browse by categories")
-                                    .modifier(SectionTitle())
-                                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2)) {
-                                    ForEach(dataManager.categories, id: \.name) { category in
-                                        Capsule(style: .circular)
-                                            .foregroundColor((Color(hex: "95989D")))
-                                            .frame(width: 175, height: 75)
-                                            .overlay {
-                                                Text(category.name)
-                                                    .multilineTextAlignment(.leading)
-                                            }
-                                            .padding(10)
-                                    }
-                                }
-                            }
                             
+                            BrowseCategoriesView(categories: dataManager.categories)
                         }
                     default:
                         ProgressView()
@@ -56,7 +38,6 @@ struct ContentView: View {
                 }
                 .navigationTitle("Channels")
             }
-            
         }
         .navigationViewStyle(.stack)
     }

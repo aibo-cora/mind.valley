@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 struct SectionTitle: ViewModifier {
+    let fontSize: CGFloat
+    
     func body(content: Content) -> some View {
         content
             .foregroundColor(Color(hex: "95989D"))
-            .font(.system(size: 20, weight: .heavy, design: .default))
-            .padding(.leading, 22)
-            .padding(.top, 30)
+            .font(Font.custom("Roboto-Regular", size: fontSize))
     }
 }

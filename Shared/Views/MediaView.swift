@@ -13,43 +13,56 @@ struct MediaView<T>: View where T: MediaContent {
     
     @State private var pressed = false
     var body: some View {
-        Text(sectionTitle)
-            .modifier(SectionTitle())
-        ScrollViewReader { scrollview in
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack() {
-                    ForEach(Array(media.enumerated()), id: \.element) { index, media in
-                        if index < 6 {
-                            VStack() {
-                                AsyncImage(
-                                    url: URL(string: media.coverAsset.url),
-                                    content: { image in
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 175, height: 228, alignment: .center)
-                                            .cornerRadius(10)
-                                    },
-                                    placeholder: {
-                                        ProgressView()
-                                            .frame(width: 175, height: 228, alignment: .center)
+        VStack(alignment: .leading) {
+            HStack() {
+                let isNewEpisodesSection = sectionTitle == "New Episodes"
+                
+                Image(systemName: isNewEpisodesSection ? "" : "book")
+                VStack(alignment: .leading) {
+                    Text(sectionTitle)
+                        .modifier(SectionTitle(fontSize: 20))
+                    if !(isNewEpisodesSection) {
+                        Text("\(media.count)" + " " + (media is [Media] ? "episodes" : "series"))
+                    }
+                }
+            }
+            ScrollViewReader { scrollview in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack() {
+                        ForEach(Array(media.enumerated()), id: \.element) { index, media in
+                            if index < 6 {
+                                VStack() {
+                                    AsyncImage(
+                                        url: URL(string: media.coverAsset.url),
+                                        content: { image in
+                                            image.resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: 175, height: 228, alignment: .center)
+                                                .cornerRadius(10)
+                                        },
+                                        placeholder: {
+                                            ProgressView()
+                                                .frame(width: 175, height: 228, alignment: .center)
+                                        }
+                                    )
+                                    .padding([.trailing])
+                                    
+                                    VStack {
+                                        Text(media.title)
+                                            .frame(width: 175, height: 100)
+                                        Text(media.channel?.title.uppercased() ?? "")
+                                            .foregroundColor((Color(hex: "95989D")))
                                     }
-                                )
-                                .padding([.trailing])
-                                
-                                VStack {
-                                    Text(media.title)
-                                        .frame(width: 175, height: 100)
-                                    Text(media.channel?.title.uppercased() ?? "")
                                 }
-                            }
-                            .onAppear {
-                                print(media.coverAsset.url)
                             }
                         }
                     }
                 }
             }
+            Divider()
+                .padding()
         }
+        .padding()
     }
 }
 
