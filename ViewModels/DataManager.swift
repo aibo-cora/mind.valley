@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Nuke
 
 final class DataManager: ObservableObject {
     var subscriptions = [AnyCancellable]()
@@ -25,6 +26,10 @@ final class DataManager: ObservableObject {
     }
     
     let network = NetworkComm()
+    
+    init() {
+        configureDiskCaching()
+    }
     
     public func getSectionData() async {
         do {
@@ -66,23 +71,35 @@ final class DataManager: ObservableObject {
     
     /// Update status of the session on main queue.
     /// - Parameter status: New status.
-    func updateStatus(status: SessionStatus) {
+    private func updateStatus(status: SessionStatus) {
         DispatchQueue.main.async { [unowned self] in
             sessionStatus = status
         }
     }
     
     // MARK: Image Caching
-    
     /// Reading from the file system because the data being stored does not contain relations.
     /// Could be refactored to a different persistent storage solution, e.g. `CoreData`.
     /// - Parameter path: Remote URL to the image.
     /// - Returns: Binary data.
-    func loadImage(path: String) -> Data? {
+    public func loadImage(path: String) -> Data? {
         return try? readFromFileCache(imageID: parseImageID(in: path))
     }
     
-    func parseImageID(in path: String) -> String? {
+    /// Allocate 200Mbs for aggressive image disk caching.
+    private func configureDiskCaching() {
+        DataLoader.sharedUrlCache.diskCapacity = 0
+        
+        let pipeline = ImagePipeline {
+            let dataCache = try? DataCache(name: "com.yura.mindvalley")
+            
+            dataCache?.sizeLimit = 200 * 1024 * 1024
+            $0.dataCache = dataCache
+        }
+        ImagePipeline.shared = pipeline
+    }
+    
+    private func parseImageID(in path: String) -> String? {
         if let imageURL = URL(string: path) {
             if let imageID = imageURL.pathComponents.last?.components(separatedBy: ".").first {
                 print(imageID)
@@ -97,7 +114,7 @@ final class DataManager: ObservableObject {
     ///
     /// - Parameter fileURL: URL to file.
     /// - Returns: Image Data.
-    func readFromFileCache(imageID: String?) throws -> Data? {
+    private func readFromFileCache(imageID: String?) throws -> Data? {
         func composeImageDataURL(using id: String) -> URL? {
             var outputFile: URL? {
                 get {
@@ -120,7 +137,12 @@ final class DataManager: ObservableObject {
         return nil
     }
     
-    func writeToCache(fileURL: URL) {
+    private func writeToCache(fileURL: URL) {
         
     }
+}
+
+
+actor ImageCache {
+    
 }

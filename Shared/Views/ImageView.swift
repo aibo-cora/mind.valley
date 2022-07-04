@@ -6,33 +6,56 @@
 //
 
 import SwiftUI
+import NukeUI
+import Nuke
 
+/// Using 3rd party for image caching.
+///
+/// 1st party solution is incomplete.
 struct ImageView: View {
     @EnvironmentObject var dataManager: DataManager
     
     let imageURL: String
+    let imageSize = CGSize(width: 175, height: 228)
     
     var body: some View {
-        if let imageData = dataManager.loadImage(path: imageURL) {
-            if let image = UIImage(data: imageData) {
-                Image(uiImage: image)
+        LazyImage(source: imageURL) { state in
+            if let image = state.image {
+                image
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: imageSize.width, height: imageSize.height, alignment: .center)
+                    .cornerRadius(10)
+                    
+            } else if let _ = state.error {
+                ProgressView()
+                    .frame(width: imageSize.width, height: imageSize.height, alignment: .center)
+            } else {
+                ProgressView()
+                    .frame(width: imageSize.width, height: imageSize.height, alignment: .center)
             }
-        } else {
-            AsyncImage(
-                url: URL(string: imageURL),
-                content: { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 175, height: 228, alignment: .center)
-                        .cornerRadius(10)
-                },
-                placeholder: {
-                    ProgressView()
-                        .frame(width: 175, height: 228, alignment: .center)
-                }
-            )
-            .padding([.trailing])
         }
+        .processors([ImageProcessors.Resize(size: imageSize)])
+        .padding([.trailing])
+//        if let imageData = dataManager.loadImage(path: imageURL) {
+//            if let image = UIImage(data: imageData) {
+//                Image(uiImage: image)
+//            }
+//        } else {
+//            AsyncImage(
+//                url: URL(string: imageURL),
+//                content: { image in
+//                    image.resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                        .frame(width: 175, height: 228, alignment: .center)
+//                        .cornerRadius(10)
+//                },
+//                placeholder: {
+//                  ProgressView()
+//                     .frame(width: imageSize.width, height: imageSize.height, alignment: .center)
+//                }
+//            )
+//            .padding([.trailing])
+//        }
     }
 }
 
