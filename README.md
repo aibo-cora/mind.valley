@@ -19,5 +19,5 @@ There are 3 <code>dataTaskPublisher</code>s that are being combined to notify th
 
 <br>
 <h2> SwiftUI </h2>
-There are 3 tiny structs that are the foundation of a complex UI design.
+There are 4 tiny views that are the foundation of a complex UI design.
 

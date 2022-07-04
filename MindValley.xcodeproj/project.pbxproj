@@ -28,6 +28,8 @@
 		DE48D5D028731E9300C17FA6 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE48D5C328731E9300C17FA6 /* Roboto-Black.ttf */; };
 		DE48D5D3287327D500C17FA6 /* BrowseCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE48D5D2287327D500C17FA6 /* BrowseCategoriesView.swift */; };
 		DE48D5D4287327DB00C17FA6 /* BrowseCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE48D5D2287327D500C17FA6 /* BrowseCategoriesView.swift */; };
+		DE48D5D728734FA200C17FA6 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE48D5D628734FA200C17FA6 /* ImageView.swift */; };
+		DE48D5D828734FA200C17FA6 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE48D5D628734FA200C17FA6 /* ImageView.swift */; };
 		DE58C4D8286E1AD000384F17 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4D7286E1AD000384F17 /* Tests_iOS.swift */; };
 		DE58C4DA286E1AD000384F17 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4D9286E1AD000384F17 /* Tests_iOSLaunchTests.swift */; };
 		DE58C4E4286E1AD000384F17 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4E3286E1AD000384F17 /* Tests_macOS.swift */; };
@@ -87,6 +89,7 @@
 		DE48D5C328731E9300C17FA6 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		DE48D5D1287320C100C17FA6 /* MindValley--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MindValley--iOS--Info.plist"; sourceTree = "<group>"; };
 		DE48D5D2287327D500C17FA6 /* BrowseCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCategoriesView.swift; sourceTree = "<group>"; };
+		DE48D5D628734FA200C17FA6 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		DE58C4BF286E1ACE00384F17 /* MindValleyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindValleyApp.swift; sourceTree = "<group>"; };
 		DE58C4C0286E1ACE00384F17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DE58C4C1286E1AD000384F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 				DE58C4C0286E1ACE00384F17 /* ContentView.swift */,
 				DEE2C3492870CE3400EBC094 /* MediaView.swift */,
 				DE48D5D2287327D500C17FA6 /* BrowseCategoriesView.swift */,
+				DE48D5D628734FA200C17FA6 /* ImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -462,6 +466,7 @@
 				DE42CC45286E292F005F662C /* Shared.swift in Sources */,
 				DE42CC48286E295E005F662C /* Categories.swift in Sources */,
 				DEE2C34E28711DB900EBC094 /* SectionTitle.swift in Sources */,
+				DE48D5D728734FA200C17FA6 /* ImageView.swift in Sources */,
 				DE58C4FE286E1C5900384F17 /* NetworkComm.swift in Sources */,
 				DE58C503286E212300384F17 /* DataManager.swift in Sources */,
 				DEE2C34A2870CE3400EBC094 /* MediaView.swift in Sources */,
@@ -477,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE48D5D828734FA200C17FA6 /* ImageView.swift in Sources */,
 				DEE2C34F28711DB900EBC094 /* SectionTitle.swift in Sources */,
 				DE42CC46286E292F005F662C /* Shared.swift in Sources */,
 				DEE2C34B2870CE3400EBC094 /* MediaView.swift in Sources */,

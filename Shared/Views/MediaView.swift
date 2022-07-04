@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MediaView<T>: View where T: MediaContent {
+    @Environment(\.colorScheme) var colorScheme
+    
     var media: [T]
     let sectionTitle: String
     
@@ -20,7 +22,7 @@ struct MediaView<T>: View where T: MediaContent {
                 Image(systemName: isNewEpisodesSection ? "" : "book")
                 VStack(alignment: .leading) {
                     Text(sectionTitle)
-                        .modifier(SectionTitle(fontSize: 20, color: isNewEpisodesSection ? Color(hex: "95989D") : .white))
+                        .modifier(SectionTitle(fontSize: 20, color: isNewEpisodesSection ? Color(hex: "95989D") : (colorScheme == .dark ? .white : .black)))
                     if !(isNewEpisodesSection) {
                         Text("\(media.count)" + " " + (media is [Media] ? "episodes" : "series"))
                             .modifier(SectionTitle(fontSize: 16, color: Color(hex: "95989D")))
@@ -33,20 +35,7 @@ struct MediaView<T>: View where T: MediaContent {
                         ForEach(Array(media.enumerated()), id: \.element) { index, media in
                             if index < 6 {
                                 VStack() {
-                                    AsyncImage(
-                                        url: URL(string: media.coverAsset.url),
-                                        content: { image in
-                                            image.resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: 175, height: 228, alignment: .center)
-                                                .cornerRadius(10)
-                                        },
-                                        placeholder: {
-                                            ProgressView()
-                                                .frame(width: 175, height: 228, alignment: .center)
-                                        }
-                                    )
-                                    .padding([.trailing])
+                                    ImageView(imageURL: media.coverAsset.url)
                                     
                                     VStack {
                                         Text(media.title)

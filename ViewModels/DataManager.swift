@@ -64,9 +64,63 @@ final class DataManager: ObservableObject {
         }
     }
     
+    /// Update status of the session on main queue.
+    /// - Parameter status: New status.
     func updateStatus(status: SessionStatus) {
         DispatchQueue.main.async { [unowned self] in
             sessionStatus = status
         }
+    }
+    
+    // MARK: Image Caching
+    
+    /// Reading from the file system because the data being stored does not contain relations.
+    /// Could be refactored to a different persistent storage solution, e.g. `CoreData`.
+    /// - Parameter path: Remote URL to the image.
+    /// - Returns: Binary data.
+    func loadImage(path: String) -> Data? {
+        return try? readFromFileCache(imageID: parseImageID(in: path))
+    }
+    
+    func parseImageID(in path: String) -> String? {
+        if let imageURL = URL(string: path) {
+            if let imageID = imageURL.pathComponents.last?.components(separatedBy: ".").first {
+                print(imageID)
+                
+                return imageID
+            }
+        }
+        
+        return nil
+    }
+    
+    ///
+    /// - Parameter fileURL: URL to file.
+    /// - Returns: Image Data.
+    func readFromFileCache(imageID: String?) throws -> Data? {
+        func composeImageDataURL(using id: String) -> URL? {
+            var outputFile: URL? {
+                get {
+                    guard let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+
+                    return paths.appendingPathComponent(id)
+                }
+            }
+            return outputFile
+        }
+        
+        if let imageID = imageID {
+            if let imageDataURL = composeImageDataURL(using: imageID) {
+                if FileManager.default.fileExists(atPath: imageDataURL.path) {
+                    return try Data(contentsOf: imageDataURL)
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    func writeToCache(fileURL: URL) {
+        
     }
 }

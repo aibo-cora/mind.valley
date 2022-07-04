@@ -11,35 +11,35 @@ struct ContentView: View {
     @StateObject private var dataManager = DataManager()
     
     @ViewBuilder var body: some View {
-        NavigationView {
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    switch dataManager.sessionStatus {
-                    case .downloaded:
-                        VStack(alignment: .leading) {
-                            MediaView(media: dataManager.episodes, sectionTitle: "New Episodes")
-                            
-                            ForEach(dataManager.channels, id: \.title) { channel in
-                                if channel.series.count > 0 {
-                                    MediaView(media: channel.series, sectionTitle: channel.title)
-                                } else {
-                                    MediaView(media: channel.latestMedia, sectionTitle: channel.title)
-                                }
+        switch dataManager.sessionStatus {
+        case .downloaded:
+            NavigationView {
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading) {
+                        /// New Episodes
+                        MediaView(media: dataManager.episodes, sectionTitle: "New Episodes")
+                        /// Channels
+                        ForEach(dataManager.channels, id: \.title) { channel in
+                            if channel.series.count > 0 {
+                                MediaView(media: channel.series, sectionTitle: channel.title)
+                            } else {
+                                MediaView(media: channel.latestMedia, sectionTitle: channel.title)
                             }
-                            
-                            BrowseCategoriesView(categories: dataManager.categories)
                         }
-                    default:
-                        ProgressView()
-                            .task {
-                                await dataManager.getSectionData()
-                            }
+                        /// Categories
+                        BrowseCategoriesView(categories: dataManager.categories)
                     }
+                    .environmentObject(dataManager)
                 }
                 .navigationTitle("Channels")
             }
+            .navigationViewStyle(.stack)
+        default:
+            ProgressView()
+                .task {
+                    await dataManager.getSectionData()
+                }
         }
-        .navigationViewStyle(.stack)
     }
 }
 
