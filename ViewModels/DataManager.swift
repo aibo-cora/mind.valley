@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import Nuke
 
+/// Main Data manipulation class.
 final class DataManager: ObservableObject {
     var subscriptions = [AnyCancellable]()
     
@@ -34,6 +35,7 @@ final class DataManager: ObservableObject {
         configureDiskCaching()
     }
     // MARK: Data Retrieval
+    /// Load JSON data from local storage or network responses.
     public func getSectionData() async {
         do {
             updateStatus(status: .downloading)

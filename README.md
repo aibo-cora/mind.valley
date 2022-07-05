@@ -37,7 +37,7 @@ It would be better to have a <code>version</code> field in each JSON, so that wh
 </ul>
 
 <br>
-<h2> Known Issues - Architecture </h2>
+<h2> Improvements - Architecture </h2>
 <ul>
     <li> Use a dedicated class for file operations. </li>
 </ul>
