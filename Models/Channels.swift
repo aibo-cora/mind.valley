@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct ChannelsData: Decodable {
+struct ChannelsData: Codable {
     let data: ChannelList
     
-    struct ChannelList: Decodable {
+    struct ChannelList: Codable {
         let channels: [Channel]
     }
     
-    struct Channel: Decodable {
+    struct Channel: Codable {
         let title: String
         let series: [Series]
         let mediaCount: Int
@@ -23,7 +23,7 @@ struct ChannelsData: Decodable {
         let iconAsset: IconAsset?
         let coverAsset: CoverAsset
         
-        struct Series: Decodable, MediaContent, Hashable {
+        struct Series: Codable, MediaContent, Hashable {
             let id = UUID()
             
             static func == (lhs: ChannelsData.Channel.Series, rhs: ChannelsData.Channel.Series) -> Bool {
@@ -40,10 +40,16 @@ struct ChannelsData: Decodable {
             let coverAsset: CoverAsset
         }
         
-        struct IconAsset: Decodable {
+        struct IconAsset: Codable {
             let thumbnailUrl: String?
         }
     }
 }
 
-extension ChannelsData: NetworkResponse {}
+extension ChannelsData: NetworkResponse {
+    func write(to file: URL?) throws {
+        if let file = file {
+            try (JSONEncoder().encode(self)).write(to: file)
+        }
+    }
+}

@@ -7,12 +7,18 @@
 
 import Foundation
 
-struct EpisodesData: Decodable {
+struct EpisodesData: Codable {
     let data: MediaList
     
-    struct MediaList: Decodable {
+    struct MediaList: Codable {
         let media: [Media]
     }
 }
 
-extension EpisodesData: NetworkResponse {}
+extension EpisodesData: NetworkResponse {
+    func write(to url: URL?) throws {
+        if let url = url {
+            try (JSONEncoder().encode(self)).write(to: url)
+        }
+    }
+}

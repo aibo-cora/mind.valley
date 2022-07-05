@@ -7,16 +7,22 @@
 
 import Foundation
 
-struct CategoriesData: Decodable {
+struct CategoriesData: Codable {
     let data: CategoryList
     
-    struct CategoryList: Decodable {
+    struct CategoryList: Codable {
         let categories: [Category]
     }
     
-    struct Category: Decodable {
+    struct Category: Codable {
         let name: String
     }
 }
 
-extension CategoriesData: NetworkResponse {}
+extension CategoriesData: NetworkResponse {
+    func write(to url: URL?) throws {
+        if let url = url {
+            try (JSONEncoder().encode(self)).write(to: url)
+        }
+    }
+}

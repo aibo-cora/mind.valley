@@ -55,7 +55,7 @@ struct SectionTitleView<T>: View where T: MediaContent {
         HStack(spacing: 0) {
             if let channel = channel {
                 /// thumbnail URLs return `404` or are `null`
-                ImageView(imageURL: channel.iconAsset?.thumbnailUrl, imageSize: CGSize(width: 50, height: 50))
+                ImageView(imageURL: channel.iconAsset?.thumbnailUrl, imageSize: CGSize(width: 20, height: 20))
             }
             
             let isNewEpisodesSection = sectionTitle == "New Episodes"

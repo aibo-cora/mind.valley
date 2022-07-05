@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Media: Decodable, MediaContent {
+struct Media: Codable, MediaContent {
     static func == (lhs: Media, rhs: Media) -> Bool {
         lhs.id == rhs.id
     }
@@ -23,18 +23,20 @@ struct Media: Decodable, MediaContent {
     let coverAsset: CoverAsset
     let channel: Channel?
     
-    struct Channel: Decodable {
+    struct Channel: Codable {
         let title: String
     }
 }
 
-struct CoverAsset: Decodable {
+struct CoverAsset: Codable {
     let url: String
 }
 
 protocol NetworkResponse {
     associatedtype R
     var data: R { get }
+    
+    func write(to url: URL?) throws
 }
 
 protocol MediaContent: Hashable {

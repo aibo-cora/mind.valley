@@ -28,7 +28,7 @@ struct ImageView: View {
                     
             } else if let _ = state.error {
                 Image(systemName: "book")
-                    .font(.system(size: 20))
+                    .frame(width: imageSize.width, height: imageSize.height, alignment: .center)
             } else {
                 ProgressView()
                     .frame(width: imageSize.width, height: imageSize.height, alignment: .center)
