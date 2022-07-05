@@ -17,13 +17,13 @@ struct ContentView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         /// New Episodes
-                        MediaView(media: dataManager.episodes, sectionTitle: "New Episodes")
+                        MediaView(media: dataManager.episodes, sectionTitle: "New Episodes", channel: nil)
                         /// Channels
                         ForEach(dataManager.channels, id: \.title) { channel in
                             if channel.series.count > 0 {
-                                MediaView(media: channel.series, sectionTitle: channel.title)
+                                MediaView(media: channel.series, sectionTitle: channel.title, channel: channel)
                             } else {
-                                MediaView(media: channel.latestMedia, sectionTitle: channel.title)
+                                MediaView(media: channel.latestMedia, sectionTitle: channel.title, channel: channel)
                             }
                         }
                         /// Categories

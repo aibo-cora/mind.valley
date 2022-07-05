@@ -15,7 +15,7 @@ import Nuke
 struct ImageView: View {
     @EnvironmentObject var dataManager: DataManager
     
-    let imageURL: String
+    var imageURL: String?
     let imageSize: CGSize
     
     var body: some View {
@@ -27,8 +27,8 @@ struct ImageView: View {
                     .cornerRadius(10)
                     
             } else if let _ = state.error {
-                ProgressView()
-                    .frame(width: imageSize.width, height: imageSize.height, alignment: .center)
+                Image(systemName: "book")
+                    .font(.system(size: 20))
             } else {
                 ProgressView()
                     .frame(width: imageSize.width, height: imageSize.height, alignment: .center)

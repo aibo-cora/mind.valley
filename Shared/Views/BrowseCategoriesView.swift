@@ -24,6 +24,7 @@ struct BrowseCategoriesView: View {
                         .overlay {
                             Text(category.name)
                                 .multilineTextAlignment(.leading)
+                                .font(Font.custom("Roboto-Bold", size: 18))
                         }
                         .padding(10)
                 }

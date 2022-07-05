@@ -10,43 +10,28 @@ import SwiftUI
 struct MediaView<T>: View where T: MediaContent {
     @Environment(\.colorScheme) var colorScheme
     
-    var media: [T]
+    let media: [T]
     let sectionTitle: String
+    var channel: ChannelsData.Channel? = nil
     
     @State private var pressed = false
     var body: some View {
         VStack(alignment: .leading) {
-            HStack() {
-                let isNewEpisodesSection = sectionTitle == "New Episodes"
-                
-                if !isNewEpisodesSection {
-                    Image(systemName: "book")
-                        .frame(width: 50, height: 50)
-                }
-                
-                VStack(alignment: .leading) {
-                    Text(sectionTitle)
-                        .modifier(SectionTitle(fontSize: 20, color: isNewEpisodesSection ? Color(hex: "95989D") : (colorScheme == .dark ? .white : .black)))
-                    if !(isNewEpisodesSection) {
-                        Text("\(media.count)" + " " + (media is [Media] ? "episodes" : "series"))
-                            .modifier(SectionTitle(fontSize: 16, color: Color(hex: "95989D")))
-                    }
-                }
-            }
-            ScrollViewReader { scrollview in
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack() {
-                        ForEach(Array(media.enumerated()), id: \.element) { index, media in
-                            if index < 6 {
-                                VStack() {
-                                    ImageView(imageURL: media.coverAsset.url, imageSize: CGSize(width: 175, height: 228))
-                                    
-                                    VStack {
-                                        Text(media.title)
-                                            .frame(width: 175, height: 100)
-                                        Text(media.channel?.title.uppercased() ?? "")
-                                            .foregroundColor((Color(hex: "95989D")))
-                                    }
+            SectionTitleView(colorScheme: colorScheme, media: media, sectionTitle: sectionTitle, channel: channel)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack() {
+                    ForEach(Array(media.enumerated()), id: \.element) { index, media in
+                        /// `6` items per row
+                        if index < 6 {
+                            VStack() {
+                                ImageView(imageURL: media.coverAsset.url, imageSize: CGSize(width: 175, height: 228))
+                                
+                                VStack {
+                                    Text(media.title)
+                                        .frame(width: 175, height: 100)
+                                    Text(media.channel?.title.uppercased() ?? "")
+                                        .foregroundColor((Color(hex: "95989D")))
                                 }
                             }
                         }
@@ -57,6 +42,33 @@ struct MediaView<T>: View where T: MediaContent {
                 .padding()
         }
         .padding()
+    }
+}
+
+struct SectionTitleView<T>: View where T: MediaContent {
+    let colorScheme: ColorScheme
+    let media: [T]
+    let sectionTitle: String
+    var channel: ChannelsData.Channel? = nil
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            if let channel = channel {
+                /// thumbnail URLs return `404` or are `null`
+                ImageView(imageURL: channel.iconAsset?.thumbnailUrl, imageSize: CGSize(width: 50, height: 50))
+            }
+            
+            let isNewEpisodesSection = sectionTitle == "New Episodes"
+            VStack(alignment: .leading) {
+                Text(sectionTitle)
+                    .modifier(SectionTitle(fontSize: 20, color: isNewEpisodesSection ? Color(hex: "95989D") : (colorScheme == .dark ? .white : .black)))
+                if !(isNewEpisodesSection) {
+                    Text("\(media.count)" + " " + (media is [Media] ? "episodes" : "series"))
+                        .foregroundColor(Color(hex: "95989D"))
+                        .font(Font.custom("Roboto-Regular", size: 16))
+                }
+            }
+        }
     }
 }
 

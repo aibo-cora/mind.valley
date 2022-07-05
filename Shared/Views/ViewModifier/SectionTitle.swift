@@ -15,6 +15,6 @@ struct SectionTitle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(color)
-            .font(Font.custom("Roboto-Regular", size: fontSize))
+            .font(Font.custom("Roboto-Bold", size: fontSize))
     }
 }

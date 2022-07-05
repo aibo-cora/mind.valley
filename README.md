@@ -19,9 +19,12 @@ There are 3 <code>dataTaskPublisher</code>s that are being combined to notify th
 
 <br>
 <h2> SwiftUI </h2>
-There are 4 tiny views that are the foundation of a complex UI design.
+There are 5 tiny views that are the foundation of a complex UI design.
 
 <br>
 <h2> Image Caching </h2>
 Using <code>Nuke</code> https://github.com/kean/Nuke
 
+<br>
+<h2> JSON caching </h2>
+It would be better to have a <code>version</code> field in each JSON, so that when the JSON changes, the version is updated and a new copy can be stored locally. (CMS)
