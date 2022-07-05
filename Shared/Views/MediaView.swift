@@ -19,7 +19,11 @@ struct MediaView<T>: View where T: MediaContent {
             HStack() {
                 let isNewEpisodesSection = sectionTitle == "New Episodes"
                 
-                Image(systemName: isNewEpisodesSection ? "" : "book")
+                if !isNewEpisodesSection {
+                    Image(systemName: "book")
+                        .frame(width: 50, height: 50)
+                }
+                
                 VStack(alignment: .leading) {
                     Text(sectionTitle)
                         .modifier(SectionTitle(fontSize: 20, color: isNewEpisodesSection ? Color(hex: "95989D") : (colorScheme == .dark ? .white : .black)))
@@ -35,7 +39,7 @@ struct MediaView<T>: View where T: MediaContent {
                         ForEach(Array(media.enumerated()), id: \.element) { index, media in
                             if index < 6 {
                                 VStack() {
-                                    ImageView(imageURL: media.coverAsset.url)
+                                    ImageView(imageURL: media.coverAsset.url, imageSize: CGSize(width: 175, height: 228))
                                     
                                     VStack {
                                         Text(media.title)
