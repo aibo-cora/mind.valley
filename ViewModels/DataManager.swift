@@ -19,14 +19,13 @@ final class DataManager: ObservableObject {
     }
     @Published var channels = [ChannelsData.Channel]()
     @Published var categories = [CategoriesData.Category]()
-    
-    public enum SessionStatus: Error {
-        case downloaded, downloading, networkError, unknown, fileWritingOperation
-    }
     @Published var sessionStatus: SessionStatus = SessionStatus.unknown {
         willSet {
             
         }
+    }
+    public enum SessionStatus: Error {
+        case downloaded, downloading, networkError, unknown
     }
     
     let network = NetworkComm()
@@ -34,7 +33,7 @@ final class DataManager: ObservableObject {
     init() {
         configureDiskCaching()
     }
-    
+    // MARK: Data Retrieval
     public func getSectionData() async {
         do {
             updateStatus(status: .downloading)
@@ -45,35 +44,42 @@ final class DataManager: ObservableObject {
                 let categoriesFileName = "categories"
             }
             
-            func loadingLocalCopies() throws {
-                let (localEpisodesURL, localEpisodesdata) = try readFromFileCache(fileID: JsonFileNames().episodesFileName)
-                if let _ = localEpisodesURL, let data = localEpisodesdata {
-                    print("Using local copy of the episodes JSON file.")
-                    
-                    self.episodes = try JSONDecoder().decode(EpisodesData.self, from: data).data.media
+            /// Attempt loading JSON data from local storage.
+            /// - Throws: If data is not readable or decodable.
+            /// - Returns: Keep track of how many files have been loaded. If the # is less than the total, initiate network calls.
+            func loadingLocalCopies() throws -> Int {
+                var fileLoadCount = 0
+                
+                if let episodesData = try loadCachedJSON(from: JsonFileNames().episodesFileName, reading: EpisodesData.self) {
+                    self.episodes = episodesData.data.media; fileLoadCount += 1
                 }
                 
-                let (localChannelsURL, localChannelsdata) = try readFromFileCache(fileID: JsonFileNames().channelsFileName)
-                if let _ = localChannelsURL, let data = localChannelsdata {
-                    print("Using local copy of the channel JSON file.")
-                    
-                    self.channels = try JSONDecoder().decode(ChannelsData.self, from: data).data.channels
+                if let channelsData = try loadCachedJSON(from: JsonFileNames().channelsFileName, reading: ChannelsData.self) {
+                    self.channels = channelsData.data.channels; fileLoadCount += 1
                 }
                 
-                let (localCategoriesURL, localCategoriesData) = try readFromFileCache(fileID: JsonFileNames().categoriesFileName)
-                if let _ = localCategoriesURL, let data = localCategoriesData {
-                    print("Using local copy of the categories JSON file.")
-                    
-                    self.categories = try JSONDecoder().decode(CategoriesData.self, from: data).data.categories
+                if let categoriesData = try loadCachedJSON(from: JsonFileNames().categoriesFileName, reading: CategoriesData.self) {
+                    self.categories = categoriesData.data.categories; fileLoadCount += 1
                 }
                 
-                func loadLocalFile<T: Decodable>(from file: String, reading type: T.Type) throws -> T where T: NetworkResponse {
+                func loadCachedJSON<T: Decodable>(from file: String, reading type: T.Type) throws -> T? where T: NetworkResponse {
+                    let (localFileURL, localFileData) = try readFromFileCache(fileID: file)
                     
+                    if let _ = localFileURL, let data = localFileData {
+                        print("Using local copy of the \(file) JSON file.")
+                        
+                        return try JSONDecoder().decode(type, from: data)
+                    }
+                    return nil
                 }
+                
+                return fileLoadCount
             }
             
-            try loadingLocalCopies()
-            
+            /// Start making network calls, because the data is not present locally or is corrupted.
+            ///
+            /// Save data locally after the retrieval is complete. Completion happens when all publishers report in.
+            /// - Throws: `NetworkComm.NetworkErrors`
             func startNetworkRequests() throws {
                 let episodePublisher = try network.getNetworkData(endpoint: NetworkComm.NetworkEndpoints.episodes.rawValue, using: EpisodesData.self)
                     .receive(on: DispatchQueue.main)
@@ -104,7 +110,11 @@ final class DataManager: ObservableObject {
                     .store(in: &subscriptions)
             }
             
-            try startNetworkRequests()
+            if try loadingLocalCopies() < 3 {
+                try startNetworkRequests()
+            } else {
+                updateStatus(status: .downloaded)
+            }
         } catch NetworkComm.NetworkErrors.badURL {
             updateStatus(status: .networkError)
         } catch NetworkComm.NetworkErrors.badContents {
@@ -144,6 +154,9 @@ final class DataManager: ObservableObject {
         ImagePipeline.shared = pipeline
     }
     
+    /// Get file ID from the last component of the URL.
+    /// - Parameter path: Remote URL.
+    /// - Returns: File ID.
     private func parseImageID(in path: String) -> String? {
         if let imageURL = URL(string: path) {
             if let imageID = imageURL.pathComponents.last?.components(separatedBy: ".").first {
@@ -165,9 +178,9 @@ final class DataManager: ObservableObject {
         return outputFile
     }
     
-    ///
-    /// - Parameter fileURL: URL to file.
-    /// - Returns: File data.
+    /// Read file contents if it exists.
+    /// - Parameter fileID: File name.
+    /// - Returns: If file exists in the `Caches` directory, return its `URL` and contents.
     private func readFromFileCache(fileID: String?) throws -> (URL?, Data?) {
         if let fileID = fileID {
             if let fileDataURL = composeFileDataURL(with: fileID) {

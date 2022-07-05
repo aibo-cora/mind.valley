@@ -28,3 +28,16 @@ Using <code>Nuke</code> https://github.com/kean/Nuke
 <br>
 <h2> JSON caching </h2>
 It would be better to have a <code>version</code> field in each JSON, so that when the JSON changes, the version is updated and a new copy can be stored locally. (CMS)
+
+<br>
+<h2> Known Issues - UI </h2>
+<ul>
+    <li> Icon thumbnail URL requests return <code>404</code> server error. </li>
+    <li> Maybe cache more images instead of lazily downloading them? </li>
+</ul>
+
+<br>
+<h2> Known Issues - Architecture </h2>
+<ul>
+    <li> Use a dedicated class for file operations. </li>
+</ul>
