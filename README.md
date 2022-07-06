@@ -36,8 +36,10 @@ It would be better to have a <code>version</code> field in each JSON, so that wh
     <li> Maybe cache more images instead of lazily downloading them? </li>
 </ul>
 
-<br>
 <h2> Improvements - Architecture </h2>
 <ul>
     <li> Use a dedicated class for file operations. </li>
 </ul>
+
+<h2> Tests </h2>
+Testing data retrieval from the server.

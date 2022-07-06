@@ -13,7 +13,7 @@ import Nuke
 ///
 /// 1st party solution is incomplete.
 struct ImageView: View {
-    @EnvironmentObject var dataManager: DataManager
+    @EnvironmentObject var dataManager: ChannelsViewModel
     
     var imageURL: String?
     let imageSize: CGSize

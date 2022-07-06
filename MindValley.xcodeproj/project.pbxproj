@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		DE2F3C4328739CE800B6D324 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = DE2F3C4228739CE800B6D324 /* NukeUI */; };
+		DE2F3C4B2875BF3400B6D324 /* ChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C502286E212300384F17 /* ChannelsViewModel.swift */; };
+		DE2F3C4C2875BF3900B6D324 /* Tests_Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F3C442874E4FE00B6D324 /* Tests_Network.swift */; };
+		DE2F3C4D2875BF6900B6D324 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC41286E257A005F662C /* Channels.swift */; };
+		DE2F3C4E2875BF6C00B6D324 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC47286E295E005F662C /* Categories.swift */; };
+		DE2F3C4F2875BF6F00B6D324 /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C505286E232C00384F17 /* Episodes.swift */; };
+		DE2F3C502875BF7200B6D324 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC44286E292F005F662C /* Shared.swift */; };
+		DE2F3C512875BF8900B6D324 /* NetworkComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4FD286E1C5900384F17 /* NetworkComm.swift */; };
+		DE2F3C532875C03100B6D324 /* DataCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F3C522875C03000B6D324 /* DataCaching.swift */; };
+		DE2F3C542875C03100B6D324 /* DataCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F3C522875C03000B6D324 /* DataCaching.swift */; };
 		DE42CC42286E257A005F662C /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC41286E257A005F662C /* Channels.swift */; };
 		DE42CC43286E257A005F662C /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC41286E257A005F662C /* Channels.swift */; };
 		DE42CC45286E292F005F662C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE42CC44286E292F005F662C /* Shared.swift */; };
@@ -37,14 +46,14 @@
 		DE58C4E6286E1AD000384F17 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4E5286E1AD000384F17 /* Tests_macOSLaunchTests.swift */; };
 		DE58C4E7286E1AD000384F17 /* MindValleyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4BF286E1ACE00384F17 /* MindValleyApp.swift */; };
 		DE58C4E8286E1AD000384F17 /* MindValleyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4BF286E1ACE00384F17 /* MindValleyApp.swift */; };
-		DE58C4E9286E1AD000384F17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4C0286E1ACE00384F17 /* ContentView.swift */; };
-		DE58C4EA286E1AD000384F17 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4C0286E1ACE00384F17 /* ContentView.swift */; };
+		DE58C4E9286E1AD000384F17 /* ChannelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4C0286E1ACE00384F17 /* ChannelsView.swift */; };
+		DE58C4EA286E1AD000384F17 /* ChannelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4C0286E1ACE00384F17 /* ChannelsView.swift */; };
 		DE58C4EB286E1AD000384F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE58C4C1286E1AD000384F17 /* Assets.xcassets */; };
 		DE58C4EC286E1AD000384F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE58C4C1286E1AD000384F17 /* Assets.xcassets */; };
 		DE58C4FE286E1C5900384F17 /* NetworkComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4FD286E1C5900384F17 /* NetworkComm.swift */; };
 		DE58C4FF286E1C5900384F17 /* NetworkComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C4FD286E1C5900384F17 /* NetworkComm.swift */; };
-		DE58C503286E212300384F17 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C502286E212300384F17 /* DataManager.swift */; };
-		DE58C504286E212300384F17 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C502286E212300384F17 /* DataManager.swift */; };
+		DE58C503286E212300384F17 /* ChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C502286E212300384F17 /* ChannelsViewModel.swift */; };
+		DE58C504286E212300384F17 /* ChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C502286E212300384F17 /* ChannelsViewModel.swift */; };
 		DE58C506286E232C00384F17 /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C505286E232C00384F17 /* Episodes.swift */; };
 		DE58C507286E232C00384F17 /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE58C505286E232C00384F17 /* Episodes.swift */; };
 		DEE2C3472870B09000EBC094 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE2C3462870B09000EBC094 /* Color.swift */; };
@@ -72,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE2F3C442874E4FE00B6D324 /* Tests_Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_Network.swift; sourceTree = "<group>"; };
+		DE2F3C522875C03000B6D324 /* DataCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCaching.swift; sourceTree = "<group>"; };
 		DE42CC41286E257A005F662C /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		DE42CC44286E292F005F662C /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		DE42CC47286E295E005F662C /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -92,7 +103,7 @@
 		DE48D5D2287327D500C17FA6 /* BrowseCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCategoriesView.swift; sourceTree = "<group>"; };
 		DE48D5D628734FA200C17FA6 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		DE58C4BF286E1ACE00384F17 /* MindValleyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindValleyApp.swift; sourceTree = "<group>"; };
-		DE58C4C0286E1ACE00384F17 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DE58C4C0286E1ACE00384F17 /* ChannelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsView.swift; sourceTree = "<group>"; };
 		DE58C4C1286E1AD000384F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE58C4C6286E1AD000384F17 /* MindValley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindValley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE58C4CC286E1AD000384F17 /* MindValley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindValley.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +116,7 @@
 		DE58C4E5286E1AD000384F17 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		DE58C4FD286E1C5900384F17 /* NetworkComm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkComm.swift; sourceTree = "<group>"; };
 		DE58C500286E1EF200384F17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		DE58C502286E212300384F17 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DE58C502286E212300384F17 /* ChannelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewModel.swift; sourceTree = "<group>"; };
 		DE58C505286E232C00384F17 /* Episodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episodes.swift; sourceTree = "<group>"; };
 		DEE2C3462870B09000EBC094 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DEE2C3492870CE3400EBC094 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
@@ -145,6 +156,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE2F3C462875BD4B00B6D324 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				DE58C4C0286E1ACE00384F17 /* ChannelsView.swift */,
+				DEE2C3492870CE3400EBC094 /* MediaView.swift */,
+				DE48D5D2287327D500C17FA6 /* BrowseCategoriesView.swift */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+		DE2F3C472875BD6900B6D324 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				DE48D5D628734FA200C17FA6 /* ImageView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		DE48D5B428731E7900C17FA6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +259,7 @@
 		DE58C4D6286E1AD000384F17 /* Tests iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DE2F3C442874E4FE00B6D324 /* Tests_Network.swift */,
 				DE58C4D7286E1AD000384F17 /* Tests_iOS.swift */,
 				DE58C4D9286E1AD000384F17 /* Tests_iOSLaunchTests.swift */,
 			);
@@ -249,7 +279,8 @@
 			isa = PBXGroup;
 			children = (
 				DE58C4FD286E1C5900384F17 /* NetworkComm.swift */,
-				DE58C502286E212300384F17 /* DataManager.swift */,
+				DE58C502286E212300384F17 /* ChannelsViewModel.swift */,
+				DE2F3C522875C03000B6D324 /* DataCaching.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -276,11 +307,9 @@
 		DEE2C3482870BE9600EBC094 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DE2F3C472875BD6900B6D324 /* Shared */,
+				DE2F3C462875BD4B00B6D324 /* Channels */,
 				DE48D5D52873294600C17FA6 /* ViewModifier */,
-				DE58C4C0286E1ACE00384F17 /* ContentView.swift */,
-				DEE2C3492870CE3400EBC094 /* MediaView.swift */,
-				DE48D5D2287327D500C17FA6 /* BrowseCategoriesView.swift */,
-				DE48D5D628734FA200C17FA6 /* ImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -476,9 +505,10 @@
 				DEE2C34E28711DB900EBC094 /* SectionTitle.swift in Sources */,
 				DE48D5D728734FA200C17FA6 /* ImageView.swift in Sources */,
 				DE58C4FE286E1C5900384F17 /* NetworkComm.swift in Sources */,
-				DE58C503286E212300384F17 /* DataManager.swift in Sources */,
+				DE58C503286E212300384F17 /* ChannelsViewModel.swift in Sources */,
+				DE2F3C532875C03100B6D324 /* DataCaching.swift in Sources */,
 				DEE2C34A2870CE3400EBC094 /* MediaView.swift in Sources */,
-				DE58C4E9286E1AD000384F17 /* ContentView.swift in Sources */,
+				DE58C4E9286E1AD000384F17 /* ChannelsView.swift in Sources */,
 				DE42CC42286E257A005F662C /* Channels.swift in Sources */,
 				DE58C4E7286E1AD000384F17 /* MindValleyApp.swift in Sources */,
 				DE58C506286E232C00384F17 /* Episodes.swift in Sources */,
@@ -495,10 +525,11 @@
 				DE42CC46286E292F005F662C /* Shared.swift in Sources */,
 				DEE2C34B2870CE3400EBC094 /* MediaView.swift in Sources */,
 				DE42CC49286E295E005F662C /* Categories.swift in Sources */,
+				DE2F3C542875C03100B6D324 /* DataCaching.swift in Sources */,
 				DE48D5D4287327DB00C17FA6 /* BrowseCategoriesView.swift in Sources */,
 				DE58C4FF286E1C5900384F17 /* NetworkComm.swift in Sources */,
-				DE58C504286E212300384F17 /* DataManager.swift in Sources */,
-				DE58C4EA286E1AD000384F17 /* ContentView.swift in Sources */,
+				DE58C504286E212300384F17 /* ChannelsViewModel.swift in Sources */,
+				DE58C4EA286E1AD000384F17 /* ChannelsView.swift in Sources */,
 				DE42CC43286E257A005F662C /* Channels.swift in Sources */,
 				DE58C4E8286E1AD000384F17 /* MindValleyApp.swift in Sources */,
 				DE58C507286E232C00384F17 /* Episodes.swift in Sources */,
@@ -509,8 +540,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2F3C4B2875BF3400B6D324 /* ChannelsViewModel.swift in Sources */,
+				DE2F3C4F2875BF6F00B6D324 /* Episodes.swift in Sources */,
 				DE58C4DA286E1AD000384F17 /* Tests_iOSLaunchTests.swift in Sources */,
+				DE2F3C4C2875BF3900B6D324 /* Tests_Network.swift in Sources */,
 				DE58C4D8286E1AD000384F17 /* Tests_iOS.swift in Sources */,
+				DE2F3C4D2875BF6900B6D324 /* Channels.swift in Sources */,
+				DE2F3C512875BF8900B6D324 /* NetworkComm.swift in Sources */,
+				DE2F3C502875BF7200B6D324 /* Shared.swift in Sources */,
+				DE2F3C4E2875BF6C00B6D324 /* Categories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

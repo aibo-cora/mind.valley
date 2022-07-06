@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @StateObject private var dataManager = DataManager()
+struct ChannelsView: View {
+    @StateObject private var dataManager = ChannelsViewModel()
     
     @ViewBuilder var body: some View {
         switch dataManager.sessionStatus {
@@ -43,13 +43,13 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ChannelsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            ChannelsView()
                 .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch) (3rd generation)"))
                 .previewDisplayName("iPad Pro (11-inch)")
-            ContentView()
+            ChannelsView()
                 .previewDevice(PreviewDevice(rawValue: "iPhone 13 Pro Max"))
                 .previewDisplayName("iPhone 13 Pro Max")
                 .preferredColorScheme(.dark)

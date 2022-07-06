@@ -7,13 +7,12 @@
 
 import Foundation
 import Combine
-import Nuke
 
-/// Main Data manipulation class.
-final class DataManager: ObservableObject {
+/// Main Data manipulation class for `Channels`
+final class ChannelsViewModel: ObservableObject {
     var subscriptions = [AnyCancellable]()
     
-    @Published private(set) var episodes = [Media]() {
+    @Published var episodes = [Media]() {
         willSet {
             
         }
@@ -31,9 +30,7 @@ final class DataManager: ObservableObject {
     
     let network = NetworkComm()
     
-    init() {
-        configureDiskCaching()
-    }
+    init() { }
     // MARK: Data Retrieval
     /// Load JSON data from local storage or network responses.
     public func getSectionData() async {
@@ -143,19 +140,6 @@ final class DataManager: ObservableObject {
         return try? readFromFileCache(fileID: parseImageID(in: path)).1
     }
     
-    /// Allocate 200Mbs for aggressive image disk caching.
-    private func configureDiskCaching() {
-        DataLoader.sharedUrlCache.diskCapacity = 0
-        
-        let pipeline = ImagePipeline {
-            let dataCache = try? DataCache(name: "com.yura.mindvalley")
-            
-            dataCache?.sizeLimit = 200 * 1024 * 1024
-            $0.dataCache = dataCache
-        }
-        ImagePipeline.shared = pipeline
-    }
-    
     /// Get file ID from the last component of the URL.
     /// - Parameter path: Remote URL.
     /// - Returns: File ID.
@@ -197,9 +181,4 @@ final class DataManager: ObservableObject {
     private func writeToCache(fileURL: URL) {
         
     }
-}
-
-
-actor ImageCache {
-    
 }

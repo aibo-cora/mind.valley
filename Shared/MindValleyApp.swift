@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct MindValleyApp: App {
+    let dataCaching = DataCaching()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ChannelsView()
         }
     }
 }
